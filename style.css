@@ -1,0 +1,287 @@
+/* 
+====================================================================
+COLORS
+====================================================================
+ */
+
+:root {
+  --container-bg-color: linear-gradient(140deg,#b3f4f3, #07657E);
+  --primary-bg-color: #fff;
+  --primary-text-color: #07657E;
+  --secondary-bg-color: #b3f4f3;
+  --secondary-text-color: #fff;
+  --box-shadow-color: rgba(0,0,0,.1);
+}
+
+body.active {
+  --container-bg-color: linear-gradient(140deg,#2d2b51, #000000);
+  --primary-bg-color:  #023535;
+  --primary-text-color: rgb(239, 239, 239);
+  --secondary-bg-color: #008F8C;
+  --secondary-text-color: #023535;
+  --box-shadow-color: rgba(255,255,255,.1);
+}
+
+/* 
+=====================================================================
+SCROLLBAR
+=====================================================================
+ */
+
+html::-webkit-scrollbar {
+  width: 2rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--primary-bg-color);
+}
+
+html::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+  background: var(--primary-text-color);
+}
+
+/* 
+=====================================================================
+BASIC STYLES
+=====================================================================
+ */
+
+
+* {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+  text-transform: capitalize;
+} 
+
+html {
+  font-size: 65.5%;
+  scroll-padding-top: 9%;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+header {
+  min-height: 30vh;
+}
+
+header .title {
+  color: var(--primary-text-color);
+  font-size: 6rem;
+  font-weight: 700;
+  padding: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* 
+=====================================================================
+TILE STYLES
+=====================================================================
+ */
+
+.container {
+   min-height: 100vh;
+   background: var(--container-bg-color);
+   padding: 3% 9%;
+   padding-top: 5rem;
+}
+
+.container .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.container .box-container .box {
+  background: var(--primary-bg-color);
+  flex:  1 1 300px;
+  padding: 2rem;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 1rem 1.5rem var(--box-shadow-color);
+  border-radius: 8px;
+  text-align: center;
+  z-index: 0;
+}
+
+.container .box-container .box i {
+  color: var(--primary-text-color);
+  font-size: 3rem;
+  width: 6.5rem;
+  height: 6.5rem;
+  line-height: 6.5rem;
+  border-radius: 50%;
+  background: var(--secondary-bg-color);
+  margin: 2rem 0;
+}
+
+.container .box-container .box h3 {
+  color: var(--primary-text-color);
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.container .box-container .box p {
+  color: var(--primary-text-color);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.container .box-container .box .number {
+  position: absolute;
+  top: 5px; left: 15px;
+  color: var(--primary-bg-color);
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.container .box-container .box:before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: .3s linear;
+  background: var(--primary-text-color);
+  clip-path: circle(28% at 5% 0);
+}
+
+.container .box-container .box:hover::before{
+  clip-path: circle(100%);
+}
+
+.container .box-container .box:hover > *:not(i) {
+  color: var(--secondary-text-color);
+}
+
+.hidden {
+  display: none;
+}
+
+/* 
+=====================================================================
+POP UP INTERFACING
+=====================================================================
+ */
+
+.popUp {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+.formPopup {
+  display: none;
+  position: fixed;
+  left: 45%;
+  top: 5%;
+  transform: translate(-50%, 5%);
+  z-index: 9;
+  background: var(--primary-bg-color);
+  padding: 2rem;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 1rem 1.5rem var(--box-shadow-color);
+  border-radius: 8px;
+  text-align: center;
+}
+.formContainer {
+  max-width: 300px;
+  padding: 20px;
+  background-color: var(--primary-bg-color);
+}
+.formContainer input[type=text],
+.formContainer input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 20px 0;
+  border: none;
+  background: var(--primary-bg-color);
+}
+.formContainer input[type=text]:focus,
+.formContainer input[type=password]:focus {
+  background-color: var(--primary-bg-color);
+  outline: none;
+}
+.formContainer .btn {
+  padding: 1rem 2rem;
+  border: none;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-text-color);
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+.formContainer .cancel {
+  background-color: #cc0000;
+}
+.formContainer .btn:hover,
+.openButton:hover {
+  opacity: 1;
+}
+
+/* 
+=====================================================================
+THEME TOGGLER
+=====================================================================
+ */
+
+#themeToggler {
+  position: fixed;
+  top: 5%; right: 3%;
+  font-size: 3rem;
+  color: var(--primary-bg-color);
+  background: var(--primary-text-color);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  box-shadow: 0 1rem 1.5rem var(--box-shadow-color);
+  border-radius: 8px;
+  transition: .3s linear;
+}
+
+/* 
+=====================================================================
+RESET BUTTON
+=====================================================================
+ */
+
+ #resetButton {
+  position: fixed;
+  top: 20%; right: 3%;
+  font-size: 3rem;
+  color: var(--primary-bg-color);
+  background: var(--primary-text-color);
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  box-shadow: 0 1rem 1.5rem var(--box-shadow-color);
+  border-radius: 8px;
+  transition: .3s linear;
+}
+
+/* 
+=====================================================================
+MEDIA QUERIES
+=====================================================================
+ */
+
+@media(max-width:768px){
+  .container {
+      padding: 80px 20px;
+  }
+
+  .container h3 {
+      font-size: 1.5rem;
+  }
+
+  #theme-toggler {
+     font-size: 1.5rem;
+  }
+}
+
+
+
+
